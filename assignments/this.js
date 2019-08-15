@@ -12,15 +12,41 @@
 // Principle 1
 
 // code example for Window Binding
+function topics(topic){
+  return this;
+};
 
 // Principle 2
 
 // code example for Implicit Binding
+let learn = {
+  learnIntro: 'today we wil be learning about',
+  math: 'Counting',
+  science: 'Body Parts',
+  learnObjective: function(who) {
+    console.log(`${who}, ${this.learnIntro} ${this.math} and ${this.science}!`);
+  }
+};
+learn.learnObjective('Class');
 
 // Principle 3
 
 // code example for New Binding
+function MeetTeacher(teacher) {
+  this.greeting = 'Hello class,';
+  this.teacher = teacher;
+  this.speak = function() {
+    console.log(`${this.greeting} today ${this.teacher} will be teaching you!`);
+  }
+};
+
+const dee = new MeetTeacher('Ms. Dee');
+const regus = new MeetTeacher('Mr.McCullen');
+dee.speak();
+
 
 // Principle 4
 
 // code example for Explicit Binding
+
+dee.speak.call(regus);
