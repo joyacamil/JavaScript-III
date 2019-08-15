@@ -22,7 +22,7 @@ function GameObject(object) {
   this.dimensions = object.dimensions;
 }
 
-GameObject.prototype.destroy = function destroy () { 
+GameObject.prototype.destroy = function () { 
   return `${this.name} was removed from the game.`
 }
 
@@ -33,7 +33,19 @@ GameObject.prototype.destroy = function destroy () {
   * should inherit destroy() from GameObject's prototype
 */
 
+function CharacterStats(character){
+  this.healthPoints = character.healthPoints;
+  this.name = character.name;
+}
 
+CharacterStats.prototype.takeDamage = function () {
+  return `this.name took damage.`
+}
+
+CharacterStats.prototype = Object.create(GameObject.prototype); 
+CharacterStats.prototype.takeDamage = function () {
+  return `${this.name} took damage`; 
+} 
 
 /*
   === Humanoid (Having an appearance or character resembling that of a human.) ===
